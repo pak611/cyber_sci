@@ -10,6 +10,7 @@ install = "*"
 django-on-heroku = "*"
 django-crispy-forms = "*"
 crispy-bootstrap5 = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
