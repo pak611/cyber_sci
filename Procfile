@@ -1,0 +1,1 @@
+web: gunicorn chemdataprowebsite.wsgi --log-file -
