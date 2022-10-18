@@ -8,6 +8,7 @@ django-heroku = "*"
 gunicorn = "*"
 install = "*"
 django-on-heroku = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
