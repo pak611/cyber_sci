@@ -152,9 +152,6 @@ def get_data(request, *args, **kwargs):
 
 def get_csv(request):
 
-    print('getting csv')
-    print('x_max is', x_max)
-    print('pathname is', pathname)
 
     out_df = plot_to_df(pathname, x_max, y_max)
 
