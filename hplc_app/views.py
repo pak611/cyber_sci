@@ -153,6 +153,9 @@ def get_data(request, *args, **kwargs):
 def get_csv(request):
 
 
+    pathname = 'media/images/'
+
+
     out_df = plot_to_df(pathname, x_max, y_max)
 
     x_coords = out_df.iloc[:,1].tolist()
