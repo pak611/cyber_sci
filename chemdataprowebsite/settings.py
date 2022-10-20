@@ -38,10 +38,10 @@ SECRET_KEY = "django-insecure-_k%@-ens9x+_8ia0**5cay$k)-%ho2&=7htw#&i2j$=qwp14&7
 DEBUG = True
 
 #ALLOWED_HOSTS = ['cybersci.herokuapp.com', '127.0.0.1']
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cyber_sci.herokuapp.com']
-#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cyber_sci.herokuapp.com']
+ALLOWED_HOSTS = []
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # Application definition
@@ -53,8 +53,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "whitenoise.runserver_nostatic",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #"whitenoise.runserver_nostatic",
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     "crispy_forms",
     "crispy_bootstrap5",
     #'expenses', # add the new apps here
