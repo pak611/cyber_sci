@@ -20,6 +20,7 @@ from pathlib import Path
 
 import django_on_heroku
 from django.contrib import messages
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
