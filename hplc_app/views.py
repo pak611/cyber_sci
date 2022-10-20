@@ -51,18 +51,6 @@ def graph_to_df(request):
 
     alert_message = False
 
-    #form = UploadImageForm()
-
-    #form_2 = PostForm()
-
-    #rnglist = [0,0]
-
-    #context = {
-        #'rnglist': rnglist,
-        #'form': form,
-        #'form_2': form_2,
-    #}
-
 
     if request.method == 'POST':
 
@@ -90,11 +78,15 @@ def graph_to_df(request):
 
             print('image name is', form.cleaned_data['image'])
 
-            global pathname
+            filename = form.cleaned_data['image']
+
+            global image_path
 
             #pathname = 'media/images/' + str(form.cleaned_data['image'])
 
             pathname = 'media/images/'
+
+            image_path = pathname + str(filename)
 
             alert_message = {
             'status': True,
@@ -127,7 +119,6 @@ def graph_to_df(request):
 
         form = UploadImageForm()
 
-        form_2 = PostForm()
 
         context = {
             'form': form,
@@ -153,10 +144,10 @@ def get_data(request, *args, **kwargs):
 def get_csv(request):
 
 
-    pathname = 'media/images/'
+    #pathname = 'media/images/'
 
 
-    out_df = plot_to_df(pathname, x_max, y_max)
+    out_df = plot_to_df(image_path, x_max, y_max)
 
     x_coords = out_df.iloc[:,1].tolist()
     y_coords = out_df.iloc[:,0].tolist()
@@ -227,14 +218,9 @@ class ChartData(APIView):
 
     def get(self, format = False):
 
-        pathname_1 = 'media/images/'
+        #pathname_1 = 'media/images/'
 
-
-        #x_max = 5
-        #y_max = 5
-        
-
-        out_df = plot_to_df(pathname_1, x_max, y_max)
+        out_df = plot_to_df(image_path, x_max, y_max)
 
         x_coords = out_df.iloc[:,0].tolist()
         y_coords = out_df.iloc[:,1].tolist()

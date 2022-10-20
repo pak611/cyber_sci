@@ -8,16 +8,15 @@ import matplotlib.pyplot as plt
 
 
 
-def plot_to_df(pathname, x_max,  y_max):
+def plot_to_df(image_path, x_max,  y_max):
 
 
     #pathname = '/Users/patrickkampmeyer/Dropbox/Ph.D/OrganoNet/Websites/ChemDataPro/chemdataprowebsite/media/images/'
 
 
-    filename = os.listdir(pathname)[0]
 
 
-    image = io.imread(pathname+filename, as_gray=True)
+    image = io.imread(image_path, as_gray=True)
 
 
     indices = np.where(image == 1, 0, image)
