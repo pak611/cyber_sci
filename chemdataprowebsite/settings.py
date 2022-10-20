@@ -41,8 +41,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-_k%@-ens9x+_8ia0**5cay$k)-%ho2&=7htw#&i2j$=qwp14&7"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
-DEBUG = True
+DEBUG = False
+#DEBUG = True
 
 #ALLOWED_HOSTS = ['cybersci.herokuapp.com', '127.0.0.1']
 #ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cyber_sci.herokuapp.com']
@@ -115,7 +115,7 @@ DATABASES = {
         "USER": os.environ.get('DB_USER'),
         "PASSWORD": os.environ.get('DB_USER_PASSWORD'),
         "HOST": os.environ.get('DB_HOST'),
-        "PORT":5432
+        "PORT": 5432
     }
 }
 
