@@ -29,11 +29,10 @@ import dj_database_url
 #os.environ['DATABASE_URL'] = 
 
 #APP_SETTINGS= config.ProductionConfig
-#DATABASE_URL= postgres://akxmhwgyeysadasdvulk:f8efa996f6c4862acasad2fdd7f59177454b1127251444b1db12e3184f8dd2ca824@ec2-54-225-200-15.compute-1.amazonaws.com:5432/dd09pi392unnk8
+#DATABASE_URL= postgres://cenmtvucsfsxdc:e011e9daa7b4b5f9cd6c9ad64beb87d80356ff7a031dba1a1a9ad4257f7c3b10@ec2-3-220-207-90.compute-1.amazonaws.com:5432/d67os3cv9kgde2
+#DATABASE_URL = os.environ['DATABASE_URL']
 
-DATABASE_URL = os.environ['DATABASE_URL']
-
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,8 +125,8 @@ DATABASES = {
 
 #DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
-#db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
