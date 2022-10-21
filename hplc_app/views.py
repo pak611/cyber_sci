@@ -1,6 +1,6 @@
 
 from http.client import responses
-from tkinter import Image
+#from tkinter import Image
 from django.shortcuts import render
 from django.http import HttpResponse
 
