@@ -1,5 +1,6 @@
 
 from http.client import responses
+from tkinter import Image
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -8,6 +9,7 @@ from .forms import PostForm
 from .forms import UploadImageForm, ConvertImageForm
 from hplc_app.models import Image_Axes
 from .backend_functions import get_range
+from .models import Image_Axes
 
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
@@ -79,14 +81,15 @@ def graph_to_df(request):
             print('image name is', form.cleaned_data['image'])
 
             filename = form.cleaned_data['image']
+            title = form.cleaned_data['title']
 
-            global image_path
+            #global image_path
 
             #pathname = 'media/images/' + str(form.cleaned_data['image'])
 
-            pathname = 'media/images/'
+            #pathname = 'media/images/'
 
-            image_path = pathname + str(filename)
+            #image_path = pathname + str(filename)
 
             alert_message = {
             'status': True,
@@ -98,6 +101,14 @@ def graph_to_df(request):
                 'form': form,
                 'images': Image_Axes.objects.all
             }
+
+            # create the instance
+
+            ins = Image_Axes(title=title, image=filename, x_min=x_min, x_max=x_max, y_min=y_min, y_max=y_max)
+
+            ins.save()
+
+            print('data has been written to db')
 
         
 
@@ -144,7 +155,13 @@ def get_data(request, *args, **kwargs):
 def get_csv(request):
 
 
-    #pathname = 'media/images/'
+    filename = Image_Axes.objects.filter(image)
+
+
+    pathname = 'media/images/'
+
+
+    image_path = pathname + filename
 
 
     out_df = plot_to_df(image_path, x_max, y_max)
@@ -218,7 +235,24 @@ class ChartData(APIView):
 
     def get(self, format = False):
 
-        #pathname_1 = 'media/images/'
+        pathname = 'chemdataprowebsite/media/'
+
+        #filename = Image_Axes.objects.filter(image)
+
+        results = []
+
+
+        field_name = 'image'
+        obj = Image_Axes.objects.first()
+        field_object = Image_Axes._meta.get_field(field_name)
+        field_value = field_object.value_from_object(obj)
+
+
+        print('field_value is', field_value)
+
+
+
+        image_path = pathname + str(field_value)
 
         out_df = plot_to_df(image_path, x_max, y_max)
 
