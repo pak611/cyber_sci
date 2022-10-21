@@ -76,6 +76,8 @@ def graph_to_df(request):
             y_min = form.cleaned_data.get("y_min")
             y_max = form.cleaned_data.get("y_max")
 
+            #global(filename)
+
 
 
             print('image name is', form.cleaned_data['image'])
@@ -83,9 +85,11 @@ def graph_to_df(request):
             filename = form.cleaned_data['image']
             title = form.cleaned_data['title']
 
-            #global image_path
 
-            #pathname = 'media/images/' + str(form.cleaned_data['image'])
+
+            global image_path
+
+            image_path = 'media/images/' + str(filename)
 
             #pathname = 'media/images/'
 
@@ -155,13 +159,20 @@ def get_data(request, *args, **kwargs):
 def get_csv(request):
 
 
-    filename = Image_Axes.objects.filter(image)
+    pathname = 'chemdataprowebsite/media/'
+
+    #filename = Image_Axes.objects.filter(image)
+
+    field_name = 'image'
+    obj = Image_Axes.objects.first()
+    field_object = Image_Axes._meta.get_field(field_name)
+    field_value = field_object.value_from_object(obj)
 
 
-    pathname = 'media/images/'
+    print('field_value is', field_value)
 
 
-    image_path = pathname + filename
+    image_path = pathname + str(field_value)
 
 
     out_df = plot_to_df(image_path, x_max, y_max)
@@ -235,13 +246,14 @@ class ChartData(APIView):
 
     def get(self, format = False):
 
+
+
+        
         pathname = 'chemdataprowebsite/media/'
 
-        #filename = Image_Axes.objects.filter(image)
-
-        results = []
 
 
+        '''
         field_name = 'image'
         obj = Image_Axes.objects.first()
         field_object = Image_Axes._meta.get_field(field_name)
@@ -249,10 +261,16 @@ class ChartData(APIView):
 
 
         print('field_value is', field_value)
+        '''
+
+
+        
 
 
 
-        image_path = pathname + str(field_value)
+        #image_path = pathname + str(field_value)
+
+       
 
         out_df = plot_to_df(image_path, x_max, y_max)
 
