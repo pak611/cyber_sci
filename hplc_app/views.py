@@ -159,7 +159,7 @@ def get_data(request, *args, **kwargs):
 def get_csv(request):
 
 
-    pathname = 'chemdataprowebsite/media/'
+    pathname = 'media/'
 
     #filename = Image_Axes.objects.filter(image)
 
