@@ -159,7 +159,7 @@ def get_data(request, *args, **kwargs):
 def get_csv(request):
 
 
-    pathname = 'media/'
+    pathname = 'media/images/'
 
     #filename = Image_Axes.objects.filter(image)
 
@@ -175,6 +175,8 @@ def get_csv(request):
     obj = Image_Axes.objects.first()
     field_object = Image_Axes._meta.get_field(field_name)
     field_value = field_object.value_from_object(obj)
+
+    print('xmax field value is', field_value)
 
 
     x_max = field_value
