@@ -169,10 +169,25 @@ def get_csv(request):
     field_value = field_object.value_from_object(obj)
 
 
-    print('field_value is', field_value)
-
-
     image_path = pathname + str(field_value)
+
+    field_name = 'x_max'
+    obj = Image_Axes.objects.first()
+    field_object = Image_Axes._meta.get_field(field_name)
+    field_value = field_object.value_from_object(obj)
+
+
+    x_max = field_value
+
+
+    field_name = 'y_max'
+    obj = Image_Axes.objects.first()
+    field_object = Image_Axes._meta.get_field(field_name)
+    field_value = field_object.value_from_object(obj)
+
+
+    y_max = field_value
+
 
 
     out_df = plot_to_df(image_path, x_max, y_max)
