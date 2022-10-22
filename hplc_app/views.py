@@ -62,7 +62,7 @@ def graph_to_df(request):
 
         if form.is_valid():
             print('IMAGE IS VALID')
-            form.save()
+            #form.save()
             obj=form.instance
 
             global x_max
