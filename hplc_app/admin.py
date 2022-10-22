@@ -6,5 +6,4 @@ from .models import graph_input
 
 
 admin.site.register(graph_input)
-
 admin.site.register(Image_Axes)

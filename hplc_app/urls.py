@@ -8,10 +8,9 @@ from django.urls import include, path, re_path
 
 
 
-
-
 urlpatterns = [
     path('', views.graph_to_df, name='graph_to_df'),
+    #for delete image button optionality
     #re_path(r'^delete_Image_Axes/<Image_Axes_id>', views.delete_Image_Axes, name='delete-Image_Axes'),
     re_path(r'^api/data/$', views.get_data, name='api-data'),
     re_path(r'^api/chart/data/$', views.ChartData.as_view(), name=''),

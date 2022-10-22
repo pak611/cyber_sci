@@ -23,9 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('hplc_app.urls')),
     #path('', RedirectView.as_view(url='/hplc_app/', permanent=True)),
-    
-
-
         ]
 
 

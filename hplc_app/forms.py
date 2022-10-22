@@ -8,8 +8,8 @@ from .models import *
 
 
 class PostForm(ModelForm):
-    # this is ModelForm taking in the metadata
-    # which says that all the fields of the form are going to be based on the model graph_input
+    '''this is ModelForm taking in the metadata
+    which says that all the fields of the form are going to be based on the model graph_input'''
 
     #edit_axis = forms.BooleanField(widget=forms.HiddenInput, initial=True)
     class Meta:

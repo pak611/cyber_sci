@@ -17,7 +17,6 @@ class graph_input(models.Model):
 # Create your models here.
 class Image_Axes(models.Model):
     title = models.CharField(primary_key=True, max_length=100, help_text='Enter an image title')
-    #title = 'default title'
     image = models.FileField(null=True, blank=True, upload_to='images/')
     x_min = models.IntegerField(null=True)
     x_max = models.IntegerField(null=True)
@@ -26,7 +25,6 @@ class Image_Axes(models.Model):
 
     #def __str__(self):
     #    return self.title
-
 
 class ConvertImage(models.Model):
     filename = models.CharField(primary_key=True, max_length=100, help_text='Enter csv filename')

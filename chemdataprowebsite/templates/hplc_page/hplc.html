@@ -33,54 +33,34 @@
 
     
   </head>
-
-
-
-
 <body>
     
 <main>
   
     <div class="container py-4">
-      
       <header class="pb-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          
+    /Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/code/electron-sandbox/workbench/workbench.html      
           <span class="display-5 fw-bold">Graph to Data Converter</span>
         </a>
       </header>
 
-
-
-    <section>
-
-      
+    <section> 
       <div class="container">
-
-        
         <div class="row align-items-md-stretch">
- 
         <div class="col-sm-6">
-
           <div class="h-100 p-5 text-bg-dark rounded-3">
-         
             <form action="" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               {{ form|crispy }}
-              <!--{{ out_df }}-->
               <button type="submit" class="btn btn-light fw-bold">Upload</button>
             </form>
-
-         
           </div>
-
-    
               <li class = 'nav-item'>
                   <a class = 'nav-link' href = "{% url 'get_csv' %}">
                       <button type="button" class="btn btn-secondary fw-bold">Download CSV</button>
                   </a>
               </li>
-        
         </div>
   
 
@@ -96,10 +76,6 @@
 
       </div>
 
-
-
-
-      
     <script>
     $(document).ready(function(){
         
@@ -154,14 +130,11 @@
 
       })
        
-    // var ctx = document.getElementById("myChart");
-    
+
     
     </script>
 
 
-    
-    
         </div>
     </div>
       <script
