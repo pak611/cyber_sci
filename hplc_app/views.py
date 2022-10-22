@@ -1,5 +1,6 @@
 
 from http.client import responses
+from tkinter import Image
 #from tkinter import Image
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -42,58 +43,40 @@ import pandas as pd
 import csv
 
 
-
-
-
-
 # Create your views here.
+
+'''
+def delete_Image_Axes(request, Image_Axes_id):
+    Image_Axes = Image_Axes.objects.get()
+    Image_Axes.delete()
+'''
+
 
 
 def graph_to_df(request):
-
     alert_message = False
-
-
-    if request.method == 'POST':
-
-        
+    if request.method == 'POST': 
         form = UploadImageForm(request.POST, request.FILES)
-
-
         if form.is_valid():
             print('IMAGE IS VALID')
             #form.save()
-            obj=form.instance
-
+            #obj=form.instance
             global x_max
             global y_max
-
             global x_min
             global y_min
+            global image_path
 
             x_min = form.cleaned_data.get("x_min")
             x_max = form.cleaned_data.get("x_max")
             y_min = form.cleaned_data.get("y_min")
             y_max = form.cleaned_data.get("y_max")
 
-            #global(filename)
-
-
-
-            print('image name is', form.cleaned_data['image'])
-
             filename = form.cleaned_data['image']
             title = form.cleaned_data['title']
 
 
-
-            global image_path
-
             image_path = 'media/images/' + str(filename)
-
-            #pathname = 'media/images/'
-
-            #image_path = pathname + str(filename)
 
             alert_message = {
             'status': True,
@@ -201,25 +184,12 @@ def get_csv(request):
     y_coords.reverse()
 
     
-
-    #print('y_coords are',y_coords)
-
-    #data = [x_coords, y_coords]
-
-    
     results = pd.DataFrame({
             "x_coords": x_coords,
             "y_coords": y_coords,
     })
     
-    
-    #results = pd.DataFrame(data, columns=['x_coords', 'y_coords'])
 
-
-   
-
-    #response = HttpResponse(content_type='text/csv')
-    #response['Content-Disposition'] = 'attachment; filename=filename.csv'
 
     response = HttpResponse(
         content_type='text/csv',
@@ -227,22 +197,18 @@ def get_csv(request):
     )
 
     writer = csv.writer(response)
-    #writer.writerow(['First row', 'Foo', 'Bar', 'Baz'])
-    #writer.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
+
 
     for i in range(1, results.shape[0]):
 
-        print('RESULTS SHAPE IS', results.shape[0])
-        
      
         writer.writerow([results.iloc[i,0], results.iloc[i,1]])
 
 
+    entry = Image_Axes.objects.get()
+    entry.delete()
 
-   # results.to_csv(path_or_buf=response,sep=';',float_format='%.2f',index=False,decimal=",")
 
-
-    #return results
     return response
 
 
