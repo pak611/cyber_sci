@@ -48,8 +48,8 @@ SECRET_KEY = "django-insecure-_k%@-ens9x+_8ia0**5cay$k)-%ho2&=7htw#&i2j$=qwp14&7
 #DEBUG = False
 DEBUG = True
 
-#ALLOWED_HOSTS = ['cybersci.herokuapp.com', '127.0.0.1']
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cyber_sci.herokuapp.com']
+ALLOWED_HOSTS = ['cybersci.herokuapp.com', '127.0.0.1']
+#ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cyber_sci.herokuapp.com']
 #ALLOWED_HOSTS = []
 
 #SECRET_KEY = os.environ.get('SECRET_KEY')
