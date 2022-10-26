@@ -9,7 +9,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import PostForm
 from .forms import UploadImageForm, ConvertImageForm
 from hplc_app.models import Image_Axes
-from .backend_functions import get_range
 from .models import Image_Axes
 
 from django.contrib.auth import get_user_model
