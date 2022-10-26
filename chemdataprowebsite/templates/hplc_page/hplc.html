@@ -44,38 +44,87 @@
         </a>
       </header>
 
-    <section> 
-      <div class="container">
-        <div class="row align-items-md-stretch">
-        <div class="col-sm-6">
-          <div class="h-100 p-5 text-bg-dark rounded-3">
-            <form action="" method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ form|crispy }}
-              <button type="submit" class="btn btn-light fw-bold">Upload</button>
-            </form>
-          </div>
-              <li class = 'nav-item'>
-                  <a class = 'nav-link' href = "{% url 'get_csv' %}">
-                      <button type="button" class="btn btn-secondary fw-bold">Download CSV</button>
-                  </a>
-              </li>
-        </div>
-  
 
+      <div class="container">
         <div class='col-sm-6'>
+        
+          <div class="row" data-masonry='{"percentPosition": true }'>
+              
+                <div class="card">
+                  <h5 class="card-title display-8 fw-bold">Prepare image for upload</h5>
+                  <img src = '{% static "img/converted_plot.png" %}'>
+                  
+                  <div class="card-body">
+                    
+                    <p class="card-text ">-Remove axis from the image by cropping before uploading</p>
+                    <p class="card-text">-Enter in axis mins and maxes</p>
+                  </div>
+                </div>
+
+          </div>
+
+          <div class="row align-items-md-stretch">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+              <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-light fw-bold" id="upload_btn">Upload</button>
+              </form>
+            </div>
+                <li class = 'nav-item'>
+                    <a class = 'nav-link' href = "{% url 'get_csv' %}">
+                        <button type="button" class="btn btn-secondary fw-bold">Download CSV</button>
+                    </a>
+                </li>
+          </div>
+
+    </div>
+        
+
+          <!--<script>
+            const upload_btn = document.getElementById('upload_btn');
+            const picture_space = document.getElementById('picture_space');
+  
+            upload_btn.addEventListener('click', function onClick(event) {
+              // change the background image
+            
+            picture_space.body.style.backgroundImage = '';
+            
+            })
+            
+          </script>-->
+   
+      <div class='col-sm-6', id="picture_space">
           <div class="h-100 p-5 bg-light border rounded-3">
             <canvas id="myChart" width="400" height="400"></canvas>
           </div>
-          
-        </div>
       </div>
+      </div>
+
+
+
+      
+
+
+
+
+
+      
+
         
 
 
-      </div>
 
-    <script>
+  <!--===================== JAVASCRIPT =================================-->
+      <script
+        class="jsbin"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+      ></script>
+
+
+  <!--===================== AJAX =================================-->
+
+  <script>
     $(document).ready(function(){
         
     var endpoint = '/api/chart/data/'
@@ -134,12 +183,6 @@
     </script>
 
 
-        </div>
-    </div>
-      <script
-        class="jsbin"
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
-      ></script>
       <script
         class="jsbin"
         src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"
@@ -203,7 +246,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 
 
-
+<!--===================== STYLING =================================-->
 
 <style>
 
