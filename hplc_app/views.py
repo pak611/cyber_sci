@@ -147,6 +147,7 @@ def get_csv(request):
 
     field_name = 'image'
     obj = Image_Axes.objects.first()
+    print('database object is', Image_Axes.objects.first())
     field_object = Image_Axes._meta.get_field(field_name)
     field_value = field_object.value_from_object(obj)
 
