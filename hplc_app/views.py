@@ -65,6 +65,7 @@ def graph_to_df(request):
             global x_min
             global y_min
             global image_path
+            global title
 
             x_min = form.cleaned_data.get("x_min")
             x_max = form.cleaned_data.get("x_max")
@@ -205,7 +206,8 @@ def get_csv(request):
         writer.writerow([results.iloc[i,0], results.iloc[i,1]])
 
 
-    entry = Image_Axes.objects.get()
+    #entry = Image_Axes.objects.get()
+    entry = Image_Axes.objects.first()
     entry.delete()
 
 
@@ -245,11 +247,6 @@ class ChartData(APIView):
 
         print('field_value is', field_value)
         '''
-
-
-        
-
-
 
         #image_path = pathname + str(field_value)
 
