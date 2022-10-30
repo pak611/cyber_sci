@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 
 def plot_to_df(image_path, x_max,  y_max):
 
+    
+    nth_row = 5
+
 
     image = io.imread(image_path, as_gray=True)
     indices = np.where(image == 1, 0, image)
@@ -30,6 +33,8 @@ def plot_to_df(image_path, x_max,  y_max):
 
     trans_arr = np.append(x_arr, y_arr, axis = 1)
     trans_df = pd.DataFrame(trans_arr)
+
+    trans_df = trans_df.iloc[::nth_row, :]
 
 
     return(trans_df)

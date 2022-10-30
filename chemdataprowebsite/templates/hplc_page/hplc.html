@@ -31,24 +31,46 @@
   {% include 'base/bootstrap_defaults.html' %}
   {% include 'base/js.html' %}
 
+
+  <style>
+    body {
+      background: rgb(235, 248, 250); 
+      font-family: 'Roboto', sans-serif;
+    }
+
+  </style>
+
+  <style>
+    .container-1 {
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background: rgba(0, 0, 0, 0.6);
+  font-family: 'Roboto', sans-serif;
+
+}
+  </style>
     
   </head>
 <body>
     
 <main>
   
-    <div class="container py-4">
-      <header class="pb-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          <span class="display-5 fw-bold">Graph to Data Converter</span>
-        </a>
-      </header>
+
+      <div class="container-1 shadow-sm mb-4">
+          <div class="py-5 text-center">
+            <h2 class="text-light">Graph to Data Converter</h2>
+          </div>
+      </div>
+      
 
 
       <div class="container">
         <div class='col-sm-6'>
         
-          <div class="row mb-4" data-masonry='{"percentPosition": true }'>
+          <div class="row mb-4 shadow-lg" data-masonry='{"percentPosition": true }'>
               
                 <div class="card">
                   <h5 class="card-title display-8 fw-bold">Prepare image for upload</h5>
@@ -63,20 +85,22 @@
 
           </div>
 
-          <div class="row align-items-md-stretch">
-            <div class="h-100 p-5 text-bg-dark rounded-3">
+          <div class="row align-items-md-stretch  shadow-lg">
+            <div class="h-100 p-5 text-bg-light rounded-3 shadow">
               <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="submit" class="btn btn-light fw-bold" id="upload_btn">Upload</button>
+                <button type="submit" class="btn btn-dark fw-bold" id="upload_btn">Upload</button>
               </form>
             </div>
-                <li class = 'nav-item'>
-                    <a class = 'nav-link' href = "{% url 'get_csv' %}">
-                        <button type="button" class="btn btn-secondary fw-bold">Download CSV</button>
-                    </a>
-                </li>
+
           </div>
+
+          <li class = 'nav-item'>
+            <a class = 'nav-link' href = "{% url 'get_csv' %}">
+                <button type="button" class="btn btn-secondary fw-bold">Download CSV</button>
+            </a>
+        </li>
 
     </div>
         
@@ -95,7 +119,7 @@
           </script>-->
    
       <div class='col-sm-6', id="picture_space">
-          <div class="h-100 p-5 bg-light border rounded-3">
+          <div class="h-100 p-5 bg-light border rounded-3 shadow-lg">
             <canvas id="myChart" width="400" height="400"></canvas>
           </div>
       </div>
@@ -421,6 +445,8 @@ transition: all .2s ease;
 
 
 </style>
+
+
 
 </main>
 
